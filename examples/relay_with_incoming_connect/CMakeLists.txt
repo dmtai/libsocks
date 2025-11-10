@@ -1,0 +1,3 @@
+add_subdirectory(coro_echo_server)
+add_subdirectory(socks5_proxy)
+add_subdirectory(coro_socks5_echo_client)

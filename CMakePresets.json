@@ -1,0 +1,91 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "linux-debug",
+      "displayName": "Linux debug",
+      "description": "Linux debug build",
+      "inherits": [
+        "linux-common-flags"
+      ],
+      "binaryDir": "${sourceDir}/build_debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_FLAGS": "-g -O0 -fno-inline"
+      },
+      "toolchainFile": "${sourceDir}/third_party_build/build/Debug/generators/conan_toolchain.cmake"
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux release",
+      "description": "Linux release build",
+      "inherits": [
+        "linux-common-flags"
+      ],
+      "binaryDir": "${sourceDir}/build_release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_FLAGS": "-O3 -flto=auto -DNDEBUG"
+      },
+      "toolchainFile": "${sourceDir}/third_party_build/build/Release/generators/conan_toolchain.cmake"
+    },
+    {
+      "name": "linux-common-flags",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "SOCKS5_BUILD_TESTS": "ON",
+        "SOCKS5_BUILD_EXAMPLES": "ON"
+      }
+    },
+    {
+      "name": "win-debug",
+      "displayName": "Windows debug",
+      "description": "Windows debug build",
+      "inherits": [
+        "win-common-flags"
+      ],
+      "binaryDir": "${sourceDir}/build_debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_FLAGS": "/Zi /Od /Ob0 /MDd /EHsc"
+      },
+      "toolchainFile": "${sourceDir}/third_party_build/build/Debug/generators/conan_toolchain.cmake"
+    },
+    {
+      "name": "win-release",
+      "displayName": "Windows release",
+      "description": "Windows release build",
+      "inherits": [
+        "win-common-flags"
+      ],
+      "binaryDir": "${sourceDir}/build_release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_FLAGS": "/O2 /GL /Oi /DNDEBUG /MT /EHsc",
+        "CMAKE_EXE_LINKER_FLAGS": "/LTCG"
+      },
+      "toolchainFile": "${sourceDir}/third_party_build/build/Debug/generators/conan_toolchain.cmake"
+    },
+    {
+      "name": "win-common-flags",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_C_COMPILER": "cl.exe",
+        "CMAKE_CXX_COMPILER": "cl.exe",
+        "SOCKS5_BUILD_TESTS": "ON",
+        "SOCKS5_BUILD_EXAMPLES": "ON"
+      }
+    }
+  ]
+}

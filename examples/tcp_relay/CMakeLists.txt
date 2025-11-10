@@ -1,0 +1,8 @@
+add_subdirectory(coro_socks5_echo_client)
+add_subdirectory(async_socks5_echo_client)
+add_subdirectory(coro_echo_server)
+add_subdirectory(socks5_proxy)
+add_subdirectory(socks5_proxy_with_data_processor)
+add_subdirectory(socks5_proxy_with_stateful_data_processor)
+add_subdirectory(socks5_proxy_with_handler)
+add_subdirectory(socks5_proxy_with_auth)
